@@ -1,0 +1,126 @@
+<!-- Álvarez Suárez María. -->
+
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width-device-width, initial-scale=1" />
+    <!-- <link rel="icon" href="img/icono.png" /> -->
+    <title>Asturias - Recepción</title>
+    <link type="text/css" rel="stylesheet" href="/bs/css/bootstrap.min.css" />
+    <link href="/css/headerfooter.css" rel="stylesheet" />
+  </head>
+
+  <body>
+    <header id="header2">
+      <object id="objHeader" th:insert="header::header" th:with="currentPage='recepcion'"></object> 
+    </header>
+
+    <main class="container">
+      <div class="my-3 p-3 bg-body rounded shadow-sm">
+
+        <div class="row mb-5">
+          <h1>RECEPCIÓN</h1>
+        </div>
+        
+        <div class="m-5">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item">
+                        <a href="/">
+                            <i class="fas fa-home fa-sm fa-fw mr-3 text-gray-600"></i>
+                        </a>
+                    </li>
+                    <li class="breadcrumb-item"><a href="/recepcion">Recepción</a></li>
+                    <li class="breadcrumb-item"><a href="/recepcion/reservas">Reservas</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Ficha Reserva</li>
+                </ol>
+            </nav>
+        </div>
+        
+        <div class="row">
+            <div class="col-5 mx-auto">
+<!--                <form class="my-3 p-3 bg-body rounded shadow-sm" th:action="@{/reservas/{id}(id=${reserva.id})/edit/{id}(id=${reserva.id})}" method="post">-->
+                    
+                    <div class="d-flex pt-3">
+                        <label for="id">Id</label>
+                    </div>
+                    <div class="d-flex pt-3">
+                        <input type="number" id="id" th:value="${reserva.idreserva}"  oninvalid="this.setCustomValidity('Id obligatorio')" required readonly/>
+                    </div>
+                    
+                    <div class="d-flex pt-3">
+                        <label for="fechareserva">Fecha reserva</label>
+                    </div>
+                    <div class="d-flex pt-3">
+                        <input type="date" id="fechareserva" th:value="${reserva.fechareserva}" oninvalid="this.setCustomValidity('Fecha reserva obligatorio')" required readonly/>
+                    </div>
+        
+                    <div class="d-flex pt-3">
+                        <label for="fechainicio">Fecha inicio</label>
+                    </div>
+                    <div class="d-flex pt-3">
+                        <input type="date" id="fechainicio" th:value="${reserva.fechainicio}"  oninvalid="this.setCustomValidity('Fecha inicio obligatorio')" required readonly/>
+                    </div>
+                    
+                    <div class="d-flex pt-3">
+                        <label for="fechafin">Fecha fin</label>
+                    </div>
+                    <div class="d-flex pt-3">
+                        <input type="date" id="fechafin" th:value="${reserva.fechafin}" oninvalid="this.setCustomValidity('Fecha fin obligatorio')" required readonly />
+                    </div>
+                    
+        			<div class="d-flex pt-3">
+                        <label for="numhabitaciones">Número de habitaciones</label>
+                    </div>
+                    <div class="d-flex pt-3">
+                        <input type="number" min="0" id="numhabitaciones" th:value="${reserva.numhabitaciones}"   oninvalid="this.setCustomValidity('Número de habitaciones obligatorio')" required readonly/>
+                    </div>
+                    
+                    <div class="d-flex pt-3">
+						<label for="habitacion">Hotel</label>
+					</div>
+					<div class="d-flex pt-3">
+						<input type="text" id="habitacion" th:value="${reserva.habitacion.hotel.nombre}"  readonly/>
+					</div>  
+                    
+                    <div class="d-flex pt-3">
+						<label for="habitacion">Habitacion</label>
+					</div>
+					<div class="d-flex pt-3">
+						<input type="text" id="habitacion" th:value="${reserva.habitacion.tipo}"  readonly/>
+					</div>  
+					
+					<div class="d-flex pt-3">
+						<label for="usuario">Usuario</label>
+					</div>
+					<div class="d-flex pt-3">
+						<input type="text" id="usuario" th:value="${reserva.usuario.dni}"  readonly/>
+					</div>  
+        
+                    <div class="d-flex pt-3">
+                        <a class="enlace" th:href="@{/recepcion/editarreserva/{id}(id=${reserva.idreserva})}" target="_top">Editar</a>
+                    </div>
+<!--                    <div class="d-flex pt-3">-->
+<!--		                <a class="enlace" th:href="@{/recepcion/reservas/eliminar/{id}(id=${reserva.idreserva})}" target="_top">Eliminar</a>-->
+<!--		            </div>-->
+                    <div class="d-flex pt-3">
+                        <a class="enlace" href="/recepcion/reservas" target="_top">Cancelar</a>
+                    </div>
+<!--                </form>-->
+            </div>
+        </div>
+        
+
+
+
+      </div>
+    </main>
+
+    <footer id="footer2">
+      <object id="objFooter" th:insert="footer::footer"></object> 
+    </footer>
+
+    <script src="/bs/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

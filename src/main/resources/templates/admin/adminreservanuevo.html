@@ -1,0 +1,159 @@
+<!-- Álvarez Suárez María. -->
+
+<!doctype html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+   <link rel="icon" href="/img/icono.png"> 
+  <title>Administración</title>
+
+  <link href="/bs/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/css/headerfooter.css" rel="stylesheet">
+</head>
+
+<body>
+
+  <header id="header2">
+	<object id="objHeader" th:insert="header::header" th:with="currentPage='administracion'"></object> 
+  </header>
+
+
+  <main class="container">
+
+    <div class="my-3 p-3 bg-body rounded shadow-sm">
+        
+      <div class="row mb-5">
+        <h1>ADMINISTRACIÓN</h1>
+      </div>
+      
+      <div class="m-5">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item">
+                        <a href="/">
+                            <i class="fas fa-home fa-sm fa-fw mr-3 text-gray-600"></i>
+                        </a>
+                    </li>
+                    <li class="breadcrumb-item"><a href="/administracion">Administración</a></li>
+                    <li class="breadcrumb-item"><a href="/administracion/reservas">Reservas</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Nueva Reserva</li>
+                </ol>
+            </nav>
+        </div>
+
+   <div th:if="${usuarios.empty or habitaciones.empty}">
+	        <p>
+				No se pueden añadir reservas, usuarios disponibles, primero añada un usuario
+				<a th:href="@{/administracion/usuarios/nuevo}" class="btn btn-outline-danger float-right mr-2">Usuarios</a>
+			</p>
+	        
+   	 	</div>
+   	 	
+   	 	 <div th:if="${habitaciones.empty}">
+	        <p>
+				No se pueden añadir reservas, no hay habitaciones, primero añada una habitación
+				<a th:href="@{/administracion/habitaciones/nuevo}" class="btn btn-outline-danger float-right mr-2">Habitaciones</a>
+			</p>
+	        
+   	 	</div>
+      
+      <div  th:unless="${usuarios.empty or habitaciones.empty}" >
+      
+      
+      <div class="row">
+            <div class="col-5 mx-auto">
+                <form class="my-3 p-3 bg-body rounded shadow-sm" th:action="@{/administracion/reservas/add}" th:object="${nuevoReserva}" method="post">
+                    
+                    <div class="d-flex pt-3">
+                        <label for="id">Id</label>
+                    </div>
+                    <div class="d-flex pt-3">
+                        <input type="number" id="id" th:field="*{idreserva}"  oninvalid="this.setCustomValidity('Id obligatorio')" required disabled/>
+                    </div>
+                    
+                    <div class="d-flex pt-3">
+                        <label for="fechareserva">Fecha reserva</label>
+                    </div>
+                    <div class="d-flex pt-3">
+                        <input type="date" id="fechareserva" th:field="*{fechareserva}" oninvalid="this.setCustomValidity('Fecha reserva obligatorio')" required />
+                    </div>
+        
+                    <div class="d-flex pt-3">
+                        <label for="fechainicio">Fecha inicio</label>
+                    </div>
+                    <div class="d-flex pt-3">
+                        <input type="date" id="fechainicio" th:field="*{fechainicio}"  oninvalid="this.setCustomValidity('Fecha inicio obligatorio')" required />
+                    </div>
+                    
+                    <div class="d-flex pt-3">
+                        <label for="fechafin">Fecha fin</label>
+                    </div>
+                    <div class="d-flex pt-3">
+                        <input type="date" id="fechafin" th:field="*{fechafin}" oninvalid="this.setCustomValidity('Fecha fin obligatorio')" required  />
+                    </div>
+                    
+        			<div class="d-flex pt-3">
+                        <label for="numhabitaciones">Número de habitaciones</label>
+                    </div>
+                    <div class="d-flex pt-3">
+                        <input type="number" min="0" id="numhabitaciones" th:field="*{numhabitaciones}"   oninvalid="this.setCustomValidity('Número de habitaciones obligatorio')" required />
+                    </div>
+                    
+                    <div class="d-flex pt-3">
+						<label for="habitacion">Hotel</label>
+					</div>
+					<div class="d-flex pt-3">
+						<select id="hotel" >
+						    <option th:each="hot: ${hoteles}" th:value="${hot.idhotel}" th:text="${hot.nombre}" >Hotel de la reserva</option>
+						</select>
+					</div>  
+                    
+                    <div class="d-flex pt-3">
+						<label for="habitacion">Habitacion</label>
+					</div>
+					<div class="d-flex pt-3">
+						<select id="habitacion"  th:field="*{habitacion}">
+						    <option th:each="habita: ${habitaciones}" th:value="${habita.idhabitacion}" th:text="${habita.tipo}" >Habitación de la reserva</option>
+						</select>
+					</div>  
+					
+					<div class="d-flex pt-3">
+						<label for="usuario">Usuario</label>
+					</div>
+					<div class="d-flex pt-3">
+						<select id="usuario"  th:field="*{usuario}" >
+						    <option th:each="usu : ${usuarios}" th:value="${usu.idusuario}" th:text="${usu.dni}" >Usuario de la reserva</option>
+						</select>
+					</div>  
+        
+                    <div class="d-flex pt-3">
+                        <input type="submit" th:value="Guardar" />
+                    </div>
+                   
+                    <div class="d-flex pt-3">
+                        <a class="enlace" href="/administracion/reservas" target="_top">Cancelar</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+      
+    </div>
+
+  </main>
+  
+
+  <footer id="footer2">
+    <object id="objFooter" th:insert="footer::footer"></object> 
+  </footer>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <script src="/bs/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+
+
+</html>

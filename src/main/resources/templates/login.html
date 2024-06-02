@@ -1,0 +1,129 @@
+<!-- Álvarez Suárez María. -->
+     
+<!DOCTYPE html>
+<html lang="es">
+     
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width-device-width, initial-scale=1">
+         <link rel="icon" href="/img/icono.png"> 
+        <title>Asturias - Login</title>
+        <link type="text/css" rel="stylesheet" href="/bs/css/bootstrap.min.css">
+        <link href="/css/headerfooter.css" rel="stylesheet">
+        <link href="/css/login.css" rel="stylesheet">
+    </head>
+     
+    <body>
+       
+        <header id="header2">
+			<object id="objHeader" th:insert="header::header" th:with="currentPage='login'"></object> 
+        </header>
+
+        <main class="container">
+
+            <div class="my-3 p-3 bg-body rounded shadow-sm">
+        		
+        		<div class="row mb-5">
+                        <h1>Log In</h1> 
+                    </div>
+        
+                <div class="row">
+					
+					<div th:if="${usuario}" class="col-12 col-md-4 mx-auto">
+					
+		                <h3>Información del Usuario</h3>
+			           <div >
+			             	<p>Nombre: <span th:text="${usuario.nombre}"></span></p>
+			             	<p>DNI: <span th:text="${usuario.dni}"></span></p>
+			             	<p>Email: <span th:text="${usuario.email}"></span></p>
+			             	<p>Teléfono: <span th:text="${usuario.telefono}"></span></p>
+			                <p>Roles:</p>
+			                 <ul>
+			                   	<li th:each="rol : ${usuario.roles}" th:text="${rol.nombre}"></li>
+			               	 </ul>
+			               	 
+			               	 <form th:action="@{/logout}" method="post"> 
+				              	<input type="submit" value="Log Out" class="btn btn-secondary mt-2"/> 
+				            </form>
+			            
+			         	</div>
+		         	</div>
+					
+					
+                    <div th:unless="${usuario}" class="col-12 col-md-4 mx-auto">
+                        <div class="d-flex justify-content-center gap-4 pt-3">
+                            <button id="btnacceso" class="btncontrol active" onclick="mostrarFormulario('acceso')">Acceso</button>
+                            <button id="btnnuevo" class="btncontrol" onclick="mostrarFormulario('nuevo')">Nuevo usuario</button>
+                        </div>
+                        <form id="formacceso" th:action="@{/j_spring_security_check}" method="post">
+        
+                            <p class="pt-3">
+                                <label for="username">DNI <span class="obligatorio">*</span> </label>
+                                <input type="text" id="username" name="username" placeholder="" oninvalid="this.setCustomValidity('DNI obligatorio')" required />
+                            </p>
+        
+                            <p class="pt-2">
+                                <label for="password">Contraseña <span class="obligatorio">*</span> </label>
+                                <input type="password" id="password" name="password" placeholder="" oninvalid="this.setCustomValidity('Contraseña obligatoria')" required />
+                            </p>
+        
+                            <p class="pt-2">
+                                <input type="submit" value="Iniciar sesión" />
+                            </p>
+        
+                        </form>
+        
+                        <form id="formnuevo" th:action="@{/addUsuario}" th:object="${nuevoUsuario}" method="post" style="display: none;">
+        
+                            <p class="pt-3">
+                                <label for="nombreNuevo">Nombre <span class="obligatorio">*</span> </label>
+                                <input type="text" id="nombreNuevo" th:field="*{nombre}" placeholder="" oninvalid="this.setCustomValidity('Nombre obligatorio')" required />
+                            </p>
+                            
+                            <p class="pt-3">
+                                <label for="dniNuevo">DNI <span class="obligatorio">*</span> </label>
+                                <input type="text" id="dniNuevo" th:field="*{dni}" placeholder="" oninvalid="this.setCustomValidity('DNI obligatorio')" required />
+                            </p>
+
+                            <p class="pt-3">
+                                <label for="correoNuevo">Correo electrónico <span class="obligatorio">*</span> </label>
+                                <input type="text" id="correoNuevo" th:field="*{email}" placeholder="" oninvalid="this.setCustomValidity('Correo obligatorio')" required />
+                            </p>
+                            
+                            <p class="pt-3">
+                                <label for="telefonoNuevo">Teléfono <span class="obligatorio">*</span> </label>
+                                <input type="text" id="telefonoNuevo" th:field="*{telefono}" placeholder="" oninvalid="this.setCustomValidity('Teléfono obligatorio')" required />
+                            </p>
+        
+                            <p class="pt-2">
+                                <label for="contrasenaNuevo">Contraseña <span class="obligatorio">*</span> </label>
+                                <input type="password" id="contrasenaNuevo" th:field="*{contrasenacifrada}"  placeholder="" oninvalid="this.setCustomValidity('Contraseña obligatoria')" required />
+                            </p>
+        
+                            <p class="pt-2">
+                                <input type="submit" value="Registrarse" />
+                            </p>
+                        </form>
+        
+                    </div>
+                </div>
+                
+                
+	         	
+        
+            </div>
+        
+        </main>
+
+
+        <footer id="footer2">
+            <object id="objFooter" th:insert="footer::footer"></object> 
+        </footer>
+
+        <script src="/bs/js/bootstrap.bundle.min.js"></script>
+        <script src="/js/login.js"></script>
+        
+    </body> 
+     
+
+</html>

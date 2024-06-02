@@ -1,0 +1,58 @@
+<!-- Álvarez Suárez María.-->
+
+<!doctype html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+   <link rel="icon" href="/img/icono.png"> 
+  <title>Contacto</title>
+
+  <link href="/bs/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/css/headerfooter.css" rel="stylesheet">
+</head>
+
+<body>
+
+  <header id="header2">
+	<object id="objHeader" th:insert="header::header" th:with="currentPage='contacto'"></object> 
+  </header>
+
+
+  <main class="container">
+
+  	<div class="my-3 p-3 bg-body rounded shadow-sm">
+        
+    	<div class="row mb-5">
+        	<h1>Gracias por tu comentario</h1>
+      	</div>
+      	
+      	
+      	<p >Mensaje enviado!</p>
+    	
+		
+		<form id="backForm">
+		    <button type="button" onclick="goBack()">Volver</button>
+		</form>
+
+
+    </div>
+      
+	
+	
+
+
+
+  </main>
+  
+
+  <footer id="footer2">
+    <object id="objFooter" th:insert="footer::footer"></object> 
+  </footer>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <script src="/bs/js/bootstrap.bundle.min.js"></script>
+<script src="/js/fnc.js"></script>
+</body>
+
+</html>

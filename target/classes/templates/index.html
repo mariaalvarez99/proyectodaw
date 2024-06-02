@@ -1,0 +1,80 @@
+<!-- Álvarez Suárez María. -->
+     
+<!DOCTYPE html>
+<html lang="es">
+     
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width-device-width, initial-scale=1">
+         <link rel="icon" href="/img/icono.png"> 
+        <title>Asturias</title>
+        <link type="text/css" rel="stylesheet" href="/bs/css/bootstrap.min.css">
+        <link href="/css/headerfooter.css" rel="stylesheet">
+        <link href="/css/index.css" rel="stylesheet">
+    
+    </head>
+     
+    <body>
+        <header id="header2">
+            <object id="objHeader" th:insert="header::header" th:with="currentPage='index'"></object> 
+        </header>
+
+        <main class="container">
+
+                <div class="my-3 p-3 bg-body rounded shadow-sm">
+                    
+                    <div class="row mb-5 container-fluid p-0">
+				        <div class="hero-section">
+				            <img src="/img/imagen1.png" class="img-fluid" alt="Imagen de hotel">
+				            <div class="hero-text">
+				                <h1>BIENVENIDO A CADENA HOTELES EN EL PARAISO</h1>
+				                <p>En Cadena Hoteles, nos enorgullece ofrecerle una experiencia de alojamiento excepcional en nuestro hotel retro. El hotel está ubicado en un ambiente tranquilo y relajante, perfecto para aquellos que buscan escapar del ajetreo y el bullicio de la ciudad. Explore nuestras habitaciones y suites únicas y disfrute de la comodidad de su hogar lejos del hogar. Haga clic en Reservar para asegurar su estadía en nuestro hotel.</p>
+				                <a href="/hoteles">RESERVAR AHORA</a>
+				            </div>
+				        </div>
+				    </div>
+                    
+                    
+                    <div class="row mb-5">
+                        <div class="col-md-2"></div>
+                        <div class="col-md-4">
+                            <strong>UNA EXPERIENCIA INCREÍBLE EN EL PARAISO</strong>
+                            <p>Testimonio. Nuestros clientes han disfrutado de su estadía en nuestros hoteles, y no podemos estar más felices de que hayan elegido quedarse con nostros. Desde el servicio excepcionalmente amable hasta la impresionante decoración, nos esforzamos por brindar la mejor experiencia de alojamiento posible. /Juan Pérez</p>
+                        </div>
+                        <div class="col-md-4">
+                            <strong>EL LUGAR PERFECTO PARA RELAJARSE Y DESCONECTAR</strong>
+                            <p>Testimonio. Me encantó alojarme en el hotel. La ubicación es perfecta, con hermosas vistas y una sensación de tranquilidad. Definitivamente regresaré en mi próximo viaje. /Andrea González</p>
+                        </div>
+                        <div class="col-md-2"></div>
+                    </div>
+
+                    <div class="row mb-5 d-flex align-items-center">
+                        <div class="col-md-2"></div>
+                        <div class="col-md-4">
+                            <strong>UNA ESTADÍA QUE NO OLVIDARÉ</strong>
+                            <p>Testimonio. Pasé una semana en el hotel y no prodría estar más feliz con mi elección. Desde el momento en que llegué me sentí como en casa gracias al personal amable y servicial. Las habitaciones son cómodas y su decoración le da un ambiente único y acogedor. Definitivamente remcomendaría este hotel a cualquiera que visite la zona. /Sofia Ramírez</p>
+                        </div>
+                        <div class="col-md-4">
+                            <img src="/img/imagen2.png" alt="Descripción de la otra imagen">
+                        </div>
+                        <div class="col-md-2"></div>
+                    </div>
+
+                </div>
+                
+
+
+        </main>
+
+
+        <footer id="footer2">
+<!--            <object id="objFooter" type="text/html" data="footer.html" ></object> -->
+				<object id="objFooter" th:insert="footer::footer"></object> 
+        </footer>
+
+        <script src="/bs/js/bootstrap.bundle.min.js"></script>
+        
+    </body> 
+     
+
+</html>

@@ -1,0 +1,88 @@
+<!-- Álvarez Suárez María. -->
+
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+     <link rel="icon" href="/img/icono.png"> 
+    <title>Asturias - Contacto</title>
+
+    <link href="/bs/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/headerfooter.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <header id="header2">
+		<object id="objHeader" th:insert="header::header" th:with="currentPage='contacto'"></object> 
+    </header>
+
+
+    <main class="container">
+
+        <div class="my-3 p-3 bg-body rounded shadow-sm">
+
+            <div class="row mb-5">
+                <h1>Ponte en contacto con nosotros</h1>
+            </div>
+
+            <div class="row mb-5">
+                <p class="text-center">En Cadena Hoteles, nos esforzamos por brindarte una experiencia única en nuestras instalaciones. Si tienes alguna pregunta o comentario, no dudes en escribirnos.</p>
+            </div>
+
+            <div class="row mb-5">
+                <p class="text-center">Puedes completar el siguiente formulario y te responderemos a la mayor brevedad posible.</p>
+            </div>
+
+            <form th:action="@{/enviarcomentario}" method="post">
+                
+            <div class="row mb-2">
+                <div class="col-md-1"></div>
+                <div class="col-md-3">
+                    <div class="row">
+                        <input type="text" id="nombre" name="nombre" placeholder="Nombre">
+                    </div>
+                    <div class="row">
+                        <input type="text" id="email" name="email" placeholder="Email">
+                    </div>
+                </div>
+                <div class="col-md-7">
+                    <textarea class="texto_mensaje" id="texto" name="texto" placeholder="Deja tu mensaje aquí..."></textarea>
+                </div>
+                <div class="col-md-1"></div>
+            </div>
+
+            <div class="row mb-5">
+                <div class="col-md-1"></div>
+                <div class="col-md-9">
+                    ¡Gracias por tu mensaje!
+                </div>
+                <div class="col-md-1">
+                    <input type="submit" value="Enviar" />
+                </div>
+                <div class="col-md-1"></div>
+            </div>
+
+            </form>
+
+            <div class="row mb-5 d-flex align-items-center resaltar">
+			    <p class="text-center p-5">En Cadena Hoteles nos aseguramos de que te sientas como en casa cuando te hospedes con nosotros.</p>
+			</div>
+
+        </div>
+        
+
+    </main>
+
+    <footer id="footer2">
+        <object id="objFooter" th:insert="footer::footer"></object> 
+    </footer>
+
+    <script src="/js/contacto.js"></script>
+    <script src="/bs/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>

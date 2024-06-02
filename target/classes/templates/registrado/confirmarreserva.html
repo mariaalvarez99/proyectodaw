@@ -1,0 +1,134 @@
+<!-- Álvarez Suárez María.-->
+
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+     <link rel="icon" href="/img/icono.png"> 
+    <title>Asturias - Confirmar reserva</title>
+
+    <link href="/bs/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="/css/headerfooter.css" rel="stylesheet" />
+  </head>
+
+  <body>
+    <header id="header2">
+<!--      <object id="objHeader" type="text/html" data="header.html?pag=confirmarreserva" ></object>-->
+		<object id="objHeader" th:insert="header::header"></object> 
+    </header>
+
+    <main class="container">
+
+      <form class="my-3 p-3 bg-body rounded shadow-sm" th:action="@{/registrado/guardarreserva}" method="post">
+        <h1>Confirmar reserva</h1>
+        
+        
+        <div class="row mb-3">   
+
+          <div class="col-md-6"> <!-- datos cliente -->
+
+			<input type="hidden" id="idusuario" name="idusuario" th:value="${usuario.idusuario}">
+			
+            <div class="d-flex pt-3">
+               <label for="nombre">Nombre  </label>
+            </div>
+            <div class="d-flex pt-3">
+                <input type="text" id="nombre" th:value="${usuario.nombre}" disabled/>
+            </div>
+
+            <div class="d-flex pt-3">
+              <label for="dni">DNI </label>
+            </div>
+            <div class="d-flex pt-3">
+              <input type="text" id="dni" th:value="${usuario.dni}" disabled/>
+            </div>
+
+          </div>
+
+          <div class="col-md-6"> <!-- datos habitacion -->
+
+            <div class="d-flex pt-3">
+              <label for="hotel">Hotel </label>
+            </div>
+            <div class="d-flex pt-3">
+              <input type="text" id="hotel" th:value="${habitacion.hotel.nombre}"  disabled/>
+            </div>
+            
+            <div class="d-flex pt-3">
+              <label for="habitacion">Habitación </label>
+            </div>
+            <div class="d-flex pt-3">
+              <input type="text" id="habitación" th:value="${habitacion.tipo}" disabled/>
+            </div>
+            
+            <input type="hidden" id="idhabitacion" name="idhabitacion" th:value="${habitacion.idhabitacion}">
+
+          </div>
+
+        </div>
+
+
+	<div class="row mb-3">   <!-- datos reseva -->
+
+            <div class="col-md-4">
+                <div class="d-flex pt-3">
+                    <label for="finicio">Fecha inicio<span class="obligatorio">*</span> </label>
+                  </div>
+                  <div class="d-flex pt-3">
+                    <input type="date" id="finicio" name="finicio" required />
+                  </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="d-flex pt-3">
+                    <label for="ffin">Fecha fin <span class="obligatorio">*</span> </label>
+                  </div>
+                  <div class="d-flex pt-3">
+                    <input type="date" id="ffin" name="ffin" required />
+                  </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="d-flex pt-3">
+                    <label for="nhabitaciones">Número de habitaciones <span class="obligatorio">*</span> </label>
+                  </div>
+                  <div class="d-flex pt-3">
+                    <input type="number" min="0" id="nhabitaciones" name="nhabitaciones" placeholder="Escribe el número de habitaciones" />
+                </div>
+            </div>
+
+        </div>
+
+
+
+<!--        <div class="d-flex pt-3">-->
+<!--          <div class="checker">-->
+<!--            <input-->
+<!--              type="checkbox"-->
+<!--              value="0"-->
+<!--              oninvalid="this.setCustomValidity('Necesario aceptar la política de privacidad')"-->
+<!--              required-->
+<!--            />-->
+<!--          </div>-->
+<!--          <label><a href="">Acepto la política de Privacidad</a></label>-->
+<!--        </div>-->
+
+        <div class="d-flex pt-3">
+          <input type="submit" value="Enviar" />
+        </div>
+
+        <div class="d-flex pt-3">
+          <span class="obligatorio"> * </span>los campos son obligatorios.
+        </div>
+      </form>
+    </main>
+
+    <footer id="footer2">
+      <object id="objFooter" th:insert="footer::footer"></object> 
+    </footer>
+
+    <script src="/js/confirmarreserva.js"></script>
+    <script src="/bs/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

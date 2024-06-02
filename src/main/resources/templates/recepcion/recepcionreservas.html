@@ -1,0 +1,133 @@
+<!-- Álvarez Suárez María. -->
+
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width-device-width, initial-scale=1" />
+    <!-- <link rel="icon" href="img/icono.png" /> -->
+    <title>Asturias - Recepción</title>
+    <link type="text/css" rel="stylesheet" href="/bs/css/bootstrap.min.css" />
+    <link href="/css/headerfooter.css" rel="stylesheet" />
+  </head>
+
+  <body>
+    <header id="header2">
+      <object id="objHeader" th:insert="header::header" th:with="currentPage='recepcion'"></object> 
+    </header>
+
+    <main class="container">
+      <div class="my-3 p-3 bg-body rounded shadow-sm">
+
+        <div class="row mb-5">
+          <h1>RECEPCIÓN</h1>
+        </div>
+        
+        <div class="m-5">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item">
+                        <a href="/">
+                            <i class="fas fa-home fa-sm fa-fw mr-3 text-gray-600"></i>
+                        </a>
+                    </li>
+                    <li class="breadcrumb-item"><a href="/recepcion">Recepción</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Reservas</li>
+                </ol>
+            </nav>
+        </div>
+        
+        <a class="enlace" th:href="@{/recepcion/usuarios}">Nueva reserva </a>
+
+		<a class="enlace" th:href="@{/recepcion/reservas}">
+	                	Eliminar filtros</span>
+	                </a>
+	
+        <form action="#" th:action="@{/recepcion/reservas/filtrar}" method="get">
+            <div class="row">
+				<div class="col-md-1">
+                    <label for="email">Hotel:</label>
+                </div>
+                <div class="col-md-2">
+                     <select id="idhotel" name="idhotel" class="form-control">
+						 <option value="0"></option>
+	                	<option th:each="hotel : ${hoteles}" th:value="${hotel.idhotel}" th:text="${hotel.nombre}" >Nombre hotel</option>
+	               	</select>
+                </div> 
+                <div class="col-md-1">
+                    <label for="email">Cliente:</label>
+                </div>
+                <div class="col-md-2">
+                     <select id="idusuario" name="idusuario" class="form-control">
+						 <option value="0"></option>
+	                	<option th:each="usuario : ${usuarios}" th:value="${usuario.idusuario}" th:text="${usuario.dni}" >DNI cliente</option>
+	               	</select>
+                </div> 
+                <div class="col-md-1">
+                    <label for="fecha1">Fecha inicio:</label>
+                </div>
+                <div class="col-md-2">
+                    <input type="date"  class="form-control" id="fecha1" name="fecha1" placeholder="Ingrese la fecha inicio">
+                </div> 
+                <div class="col-md-1">
+                    <label for="fecha2">Fecha fin:</label>
+                </div>
+                <div class="col-md-2">
+                    <input type="date"  class="form-control" id="fecha2" name="fecha2" placeholder="Ingrese la fecha fin">
+                </div> 
+                <div class="col-md-1">
+                    <button type="submit" class="">Buscar</button>
+                </div>
+            </div>
+        </form>
+
+
+        <table class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Fecha reserva</th>
+                <th scope="col">Fecha inicio</th>
+                <th scope="col">Fecha fin</th>
+                <th scope="col">NúmHabitaciones</th>
+                <th scope="col">Habitación</th>
+                <th scope="col">Hotel</th>
+                <th scope="col">Usuario</th>
+            </tr>
+        </thead>
+        <tbody>
+            
+            <tr th:if="${reservas.empty}">
+              <td colspan="2"> No hay reservas</td>
+            </tr>
+            <tr th:each="reserva : ${reservas}" >
+               	<td>
+					<a class="enlace" th:href="@{/recepcion/reserva/{id}(id=${reserva.idreserva})}">
+	                	<span th:text="${reserva.idreserva}"></span>
+	                </a>
+				</td>
+                <td th:text="${reserva.fechareserva}"></td>
+                <td th:text="${reserva.fechainicio}"></td>
+                <td th:text="${reserva.fechafin}"></td>
+                <td th:text="${reserva.numhabitaciones}"></td>
+                <td th:text="${reserva.habitacion.tipo}"></td>
+                <td th:text="${reserva.habitacion.hotel.nombre}"></td>
+                <td th:text="${reserva.usuario.dni}"></td>
+            </tr>
+            
+          
+        </tbody>
+      </table>
+
+
+
+      </div>
+    </main>
+
+    <footer id="footer2">
+      <object id="objFooter" th:insert="footer::footer"></object> 
+    </footer>
+
+    <script src="/bs/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

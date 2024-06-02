@@ -1,0 +1,108 @@
+<!-- Álvarez Suárez María.-->
+
+<!doctype html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+   <link rel="icon" href="/img/icono.png"> 
+  <title>Administración</title>
+
+  <link href="/bs/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/css/headerfooter.css" rel="stylesheet">
+</head>
+
+<body>
+
+  <header id="header2">
+	<object id="objHeader" th:insert="header::header" th:with="currentPage='administracion'"></object> 
+  </header>
+
+
+  <main class="container">
+
+  	<div class="my-3 p-3 bg-body rounded shadow-sm">
+        
+    	<div class="row mb-5">
+        	<h1>ADMINISTRACIÓN</h1>
+      	</div>
+      	
+      	<div class="m-5">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item">
+                        <a href="/">
+                            <i class="fas fa-home fa-sm fa-fw mr-3 text-gray-600"></i>
+                        </a>
+                    </li>
+                    <li class="breadcrumb-item"><a href="/administracion">Administración</a></li>
+                    <li class="breadcrumb-item"><a href="/administracion/roles">Roles</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Ficha Rol</li>
+                </ol>
+            </nav>
+        </div>
+
+      	<div class="row">
+            <div class="col-5 mx-auto">
+<!--                <form class="my-3 p-3 bg-body rounded shadow-sm" th:action="@{/roles/{id}(id=${rol.idrol})/edit/{id}(id=${rol.idrol})}" method="post">-->
+                    
+                    <div class="d-flex pt-3">
+                        <label for="id">Id</label>
+                    </div>
+                    <div class="d-flex pt-3">
+                        <input type="number" id="id" th:value="${rol.idrol}"  oninvalid="this.setCustomValidity('Id obligatorio')" required readonly/>
+                    </div>
+                    
+                    <div class="d-flex pt-3">
+                        <label for="nombre">Nombre</label>
+                    </div>
+                    <div class="d-flex pt-3">
+                        <input type="text" id="nombre" th:value="${rol.nombre}"  oninvalid="this.setCustomValidity('Nombre obligatorio')" required readonly/>
+                    </div>
+        
+                    <div class="d-flex pt-3">
+                        <label for="usuarios">Usuarios</label>
+                    </div>
+                    <div class="d-flex pt-3">
+					    <select id="usuarios" multiple disabled>
+					        <option th:each="usuario : ${usuarios}"
+					                th:value="${usuario.idusuario}"
+					                th:text="${usuario.dni}"
+					                th:selected="${rol.usuarios != null and #lists.contains(rol.usuarios, usuario)}">
+					            Usuario de rol
+					        </option>
+					    </select>
+					</div>
+        
+                    <div class="d-flex pt-3">
+                        <a class="enlace" th:href="@{/administracion/roles/editar/{id}(id=${rol.idrol})}" target="_top">Editar</a>
+                    </div>
+                    <div class="d-flex pt-3">
+		                <a class="enlace" th:href="@{/administracion/roles/eliminar/{id}(id=${rol.idrol})}" target="_top">Eliminar</a>
+		            </div>
+                    <div class="d-flex pt-3">
+                        <a class="enlace" href="/administracion/roles" target="_top">Cancelar</a>
+                    </div>
+<!--                </form>-->
+            </div>
+        </div>
+
+    </div>
+      
+	
+	
+
+
+  </main>
+  
+
+  <footer id="footer2">
+    <object id="objFooter" th:insert="footer::footer"></object> 
+  </footer>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <script src="/bs/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,102 @@
+<!-- Álvarez Suárez María.-->
+
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width-device-width, initial-scale=1" />
+     <link rel="icon" href="/img/icono.png"> 
+    <title>Asturias - Habitaciones</title>
+    <link type="text/css" rel="stylesheet" href="/bs/css/bootstrap.min.css" />
+    <link href="/css/headerfooter.css" rel="stylesheet" />
+  </head>
+
+  <body>
+    <header id="header2">
+      <object id="objHeader" th:insert="header::header" th:with="currentPage='habitaciones'"></object> 
+    </header>
+
+    <main class="container">
+      <div class="my-3 p-3 bg-body rounded shadow-sm">
+        <div class="row mb-5">
+          <h1>TARIFAS Y DISPONIBILIDAD</h1>
+        </div>
+
+        <div class="row mb-3">
+          <h2>Nuestras Habitaciones Hotel <span th:text="${hotel.nombre}"> </span></h2>
+        </div>
+
+        <hr class="separator" />
+
+        
+        <div th:each="habitacion : ${habitaciones}" >
+	        <div class="row mb-4">
+				<div class="col-md-2">
+		            <img id="img" th:src="'/img/' + ${habitacion.img} + '.png'" alt="Imagen habitación" />
+		        </div>
+				
+				<div class="col-md-8">
+	            <p ><strong th:text="${habitacion.tipo}"> Nombre habitación </strong></p>
+	            <p th:text="${habitacion.descripcion}">Descripción habitación</p>
+	            
+	
+	            <hr class="separator" />
+	
+	            <!-- https://www.flaticon.es/iconos-gratis/derechos-de-autor -->
+	            <img
+	              class="icono"
+	              src="/img/wifi.png"
+	              alt="Icono wifi"
+	            />
+	            <img
+	              class="icono"
+	              src="/img/telefono.png"
+	              alt="Icono teléfono"
+	            />
+	            <img
+	              class="icono"
+	              src="/img/television.png"
+	              alt="Icono televisión"
+	            />
+	            <img
+	              class="icono"
+	              src="/img/minibar.png"
+	              alt="Icono minibar"
+	            />
+	            <img
+	              class="icono"
+	              src="/img/calefaccion.png"
+	              alt="Icono calefacción"
+	            />
+	            <img
+	              class="icono"
+	              src="/img/aireacondicionado.png"
+	              alt="Icono aire acondicionado"
+	            />
+	          </div>
+	          <div class="col-md-2 d-flex align-items-center">
+	            <div class="fs-4 text-center">
+	              <p > <span th:text="${habitacion.precio}">Precio</span>€</p>
+	              <a th:href="@{'/registrado/confirmarreserva/' + ${habitacion.idhabitacion}}" class="enlace" target="_top">Reservar</a>
+	            </div>
+	        </div>
+        </div>
+
+		<hr class="separator mb-2" />
+       </div>
+        
+
+        
+
+        
+        
+      </div>
+    </main>
+
+    <footer id="footer2">
+      <object id="objFooter" th:insert="footer::footer"></object> 
+    </footer>
+
+    <script src="/bs/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

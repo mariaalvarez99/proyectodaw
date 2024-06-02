@@ -1,0 +1,44 @@
+<div th:fragment="header">
+	
+        <link type="text/css" rel="stylesheet" href="/bs/css/bootstrap.min.css"/>
+        <link href="/css/headerfooter.css" rel="stylesheet">
+
+    
+        <nav class="navbar navbar-expand-md fixed-top">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="index.html" target="_top">ASTURIAS</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <ul class="navbar-nav mx-auto mb-2 mb-md-0">
+                        <li class="nav-item active">
+                            <a id="index" class="nav-link" th:classappend="${currentPage == 'index' ? 'active' : ''}" aria-current="page" href="/" target="_top">Inicio</a>
+                        </li>
+                        <li class="nav-item">
+                            <a id="hoteles" class="nav-link" th:classappend="${currentPage == 'hoteles' ? 'active' : ''}" href="/hoteles" target="_top">Hoteles</a>
+                        </li>
+ 
+                        <li class="nav-item">
+                            <a id="contacto" class="nav-link" th:classappend="${currentPage == 'contacto' ? 'active' : ''}" href="/contacto" target="_top">Contacto</a>
+                        </li>
+                        <li class="nav-item">
+                            <a id="" class="nav-link" th:classappend="${currentPage == 'login' ? 'active' : ''}" href="/login" target="_top">LogIn</a>
+                        </li>
+                        <li class="nav-item">
+                            <a id="recepcion" class="nav-link" th:classappend="${currentPage == 'recepcion' ? 'active' : ''}" href="/recepcion" target="_top">Recepción</a>
+                        </li>
+                        <li class="nav-item">
+                            <a id="administracion" class="nav-link" th:classappend="${currentPage == 'administracion' ? 'active' : ''}" href="/administracion" target="_top">Administración</a>
+                        </li>
+                    </ul>
+                    
+                </div>
+            </div>
+        </nav>
+
+
+        <script src="/bs/js/bootstrap.bundle.min.js"></script> 
+        
+
+</div>

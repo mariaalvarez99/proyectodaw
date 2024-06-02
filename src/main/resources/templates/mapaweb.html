@@ -1,0 +1,60 @@
+<!-- Álvarez Suárez María. -->
+     
+<!DOCTYPE html>
+<html lang="es">
+     
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width-device-width, initial-scale=1">
+         <link rel="icon" href="/img/icono.png"> 
+        <title>Asturias - Mapa Web</title>
+        <link type="text/css" rel="stylesheet" href="/bs/css/bootstrap.min.css"/>
+        <link href="/css/headerfooter.css" rel="stylesheet">
+    </head>
+     
+    <body>
+       
+        <header id="header2">
+<!--            <object id="objHeader" type="text/html" data="header.html" ></object> -->
+			<object id="objHeader" th:insert="header::header"></object> 
+        </header>
+
+        <main class="container">
+        
+            <div class="my-3 p-3 bg-body rounded shadow-sm">
+  
+                <div class="row mb-5">
+                    <h1>Mapa Web</h1>
+                </div>
+
+                <div class="col-3 mx-auto">
+                    <ol>
+                        <li type="circle"><a href="/">Inicio</a> <br></li>
+                        <li type="circle"><a href="/hoteles">Hoteles</a> <br></li>
+                        <ol>
+                            <li type="circle"><a href="/hoteles">Habitaciones</a> <br></li>
+                        </ol>
+                        <li type="circle"><a href="/contacto">Contacto</a> <br></li>
+                        <li type="circle"><a href="/login">Log in</a> <br></li>
+                        <ol>
+                            <li type="circle"><a href="/login">Nuevo usuario</a> <br></li>
+                        </ol>
+                        <li type="circle"><a href="/recepcion">Recepción</a> <br></li>
+                        <li type="circle"><a href="/administracion">Administración</a> <br></li>
+                    </ol>
+                </div>
+                
+            </div>  
+
+        </main>
+
+        <footer id="footer2">
+            <object id="objFooter" th:insert="footer::footer"></object> 
+        </footer>
+
+        <script src="/bs/js/bootstrap.bundle.min.js"></script>
+        
+    </body> 
+     
+
+</html>

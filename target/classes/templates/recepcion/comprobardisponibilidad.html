@@ -1,0 +1,136 @@
+<!-- Álvarez Suárez María. -->
+
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width-device-width, initial-scale=1" />
+    <!-- <link rel="icon" href="img/icono.png" /> -->
+    <title>Asturias - Recepción</title>
+    <link type="text/css" rel="stylesheet" href="/bs/css/bootstrap.min.css" />
+    <link href="/css/recepcion.css" rel="stylesheet" />
+    <link href="/css/headerfooter.css" rel="stylesheet" />
+  </head>
+
+  <body>
+    <header id="header2">
+      <object id="objHeader" th:insert="header::header" th:with="currentPage='recepcion'"></object> 
+    </header>
+
+    <main class="container">
+      <div class="my-3 p-3 bg-body rounded shadow-sm">
+
+        <div class="row mb-5">
+          <h1>RECEPCIÓN</h1>
+        </div>
+
+		<div class="m-5">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item">
+                        <a href="/">
+                            <i class="fas fa-home fa-sm fa-fw mr-3 text-gray-600"></i>
+                        </a>
+                    </li>
+                    <li class="breadcrumb-item"><a href="/recepcion">Recepción</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Disponibilidad</li>
+                </ol>
+            </nav>
+        </div>
+        
+        
+        <div  >
+			<div class="row mb-3">
+				<form class="my-3 p-3 bg-body rounded shadow-sm" th:action="@{/recepcion/comprobardisponibilidad}" method="get">
+					<div class="row">
+		                <div class="col-md-2">
+		                    <label for="idhotel">Seleccione un hotel:</label>
+		                </div>
+		                <div class="col-md-2">
+		                     <select id="idhotel" name="idhotel">
+		                        <option th:each="h: ${hoteles}" th:value="${h.idhotel}" th:text="${h.nombre}">
+		                            Seleccione un hotel
+		                        </option>
+		                    </select>
+		                </div> 
+		                <div class="col-md-2">
+		                    <label for="anomes">Seleccione fecha:</label>
+		                </div>
+		                <div class="col-md-2">
+		                     <input type="month" id="anomes" name="anomes"  />
+		                </div> 
+		                <div class="col-md-2">
+		                    <button type="submit" class="">Buscar</button>
+		                </div>
+		            
+		            </div>
+				</form>
+			</div>
+        </div>
+
+		<div th:unless="${hotel == null}" >
+		<div class="row mb-3" th:each="datoshabitacion : ${lista}">
+			<div>
+				<h3 th:text="${datoshabitacion.key}"></h3>
+
+			</div>
+            <div class="col-md-6" th:each="mes : ${datoshabitacion.value}">
+				<h4 th:text="${mes.key}"></h4>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Lunes</th>
+                            <th>Martes</th>
+                            <th>Miércoles</th>
+                            <th>Jueves</th>
+                            <th>Viernes</th>
+                            <th>Sábado</th>
+                            <th>Domingo</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                         
+                         <tr th:each="semana : ${mes.value}">
+		                    <td th:each="dia : ${semana}">
+								<div th:if="${dia != null && dia != '' && dia[3] != ''} " >
+									<div th:class="${dia[3] == 'verde' ? 'disponible-verde' : dia[3] == 'amarillo' ? 'disponible-amarillo' : dia[3] == 'naranja' ? 'disponible-naranja' : 'disponible-rojo'}" >
+				                        <p><strong th:text="${dia[0]}"></strong></p>
+				                        <span th:text="${dia[1] + '/' + dia[2]}"></span>
+									</div>
+								</div>
+		                    </td>
+		                </tr>
+                         
+<!--                          <tr th:each="semana : ${mes.value}">-->
+<!--		                        <td th:each="day : ${semana}">-->
+		                           
+<!--		                           <span th:text="${day[0]}"></span>-->
+<!--		                           <span th:text="${day[1] + '/' + day[2]}"></span>-->
+		                           
+<!--		                            <span th:each="data : ${ocupacion}"-->
+<!--		                                  th:if="${#dates.format(day, 'yyyy-MM-dd') == data[0]}"-->
+<!--		                                  
+		                                
+<!--		                            </span>-->
+<!--		                        </td>-->
+<!--		                    </tr>-->
+                         
+                    </tbody>
+                </table>
+            </div>
+        </div>
+		
+		</div>
+        
+        
+        
+      </div>
+    </main>
+
+    <footer id="footer2">
+      <object id="objFooter" th:insert="footer::footer"></object> 
+    </footer>
+
+    <script src="/bs/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

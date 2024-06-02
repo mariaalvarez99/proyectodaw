@@ -1,0 +1,20 @@
+version: '3'
+services:
+  db:
+    image: mysql:latest
+    ports:
+      - "3307:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: proyectotest
+  app:
+    build: .
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
+    environment:
+      PORT: 8080
+      SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/proyectotest
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: root

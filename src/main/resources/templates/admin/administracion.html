@@ -1,0 +1,170 @@
+<!-- Álvarez Suárez María. -->
+
+<!doctype html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+   <link rel="icon" href="/img/icono.png"> 
+  <title>Administración</title>
+
+  <link href="/bs/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/css/headerfooter.css" rel="stylesheet">
+</head>
+
+<body>
+
+  <header id="header2">
+	<object id="objHeader" th:insert="header::header" th:with="currentPage='administracion'"></object> 
+  </header>
+
+
+  <main class="container">
+
+    <div class="my-3 p-3 bg-body rounded shadow-sm">
+        
+      <div class="row mb-5">
+        <h1>ADMINISTRACIÓN</h1>
+      </div>
+
+      
+      <div class="row mb-5">
+
+        <div class="col-md-4 d-flex align-items-center justify-content-center">
+            <label for="dniempleado">Usuarios</label>
+        </div>
+        
+        <div class="col-md-4 d-flex align-items-center justify-content-center">
+<!--          <input type="submit" id="btnlistartodoempleado" value="Listar todos" />-->
+          <a class="enlace" href="/administracion/usuarios" > Listar todos</a>
+        </div>
+
+        <div class="col-md-4 d-flex align-items-center justify-content-center">
+			<a class="enlace" href="/administracion/usuarios/nuevo" > Crear nuevo</a>
+        </div>
+       
+      </div>
+      
+      
+      <div class="row mb-5">
+
+        <div class="col-md-4 d-flex align-items-center justify-content-center">
+            <label for="rol">Roles</label>
+        </div>
+
+        <div class="col-md-4 d-flex align-items-center justify-content-center">
+<!--          <input type="submit" id="btnlistartodoempleado" value="Listar todos" />-->
+          <a class="enlace" href="/administracion/roles" > Listar todos</a>
+        </div>
+
+        <div class="col-md-4 d-flex align-items-center justify-content-center">
+          <a class="enlace" href="/administracion/roles/nuevo" > Crear nuevo</a>
+        </div>
+       
+      </div>
+
+
+      <div class="row mb-5">
+
+        <div class="col-md-4 d-flex align-items-center justify-content-center">
+            <label for="nombrehotel">Hoteles</label>
+        </div>
+
+        <div class="col-md-4 d-flex align-items-center justify-content-center">
+<!--          <input type="submit" id="btnlistartodohotel" value="Listar todos" />-->
+          <a class="enlace" href="/administracion/hoteles" > Listar todos</a>
+        </div>
+
+        <div class="col-md-4 d-flex align-items-center justify-content-center">
+          <a class="enlace" href="/administracion/hoteles/nuevo" > Crear nuevo</a>
+        </div>
+       
+      </div>
+
+
+      <div class="row mb-5">
+
+        <div class="col-md-4 d-flex align-items-center justify-content-center">
+            <label for="nombrehabitaacion">Habitaciones</label>
+        </div>
+       
+        <div class="col-md-4 d-flex align-items-center justify-content-center">
+<!--          <input type="submit" id="btnlistartodohabitacion" value="Listar todos" />-->
+          <a class="enlace" href="/administracion/habitaciones" > Listar todos</a>
+        </div>
+
+        <div class="col-md-4 d-flex align-items-center justify-content-center">
+          <a class="enlace" href="/administracion/habitaciones/nuevo" > Crear nuevo</a>
+        </div>
+       
+      </div>
+
+
+      <div class="row mb-5">
+
+        <div class="col-md-4 d-flex align-items-center justify-content-center">
+            <label for="nombrereserva">Reservas</label>
+        </div>
+        
+        <div class="col-md-4 d-flex align-items-center justify-content-center">
+<!--          <input type="submit" id="btnlistartodoreserva" value="Listar todos" />-->
+			<a class="enlace" href="/administracion/reservas" > Listar todos</a>
+        </div>
+
+        <div class="col-md-4 d-flex align-items-center justify-content-center">
+          <a class="enlace" href="/administracion/reservas/nuevo" > Crear nuevo</a>
+        </div>
+       
+      </div>
+
+
+      <div class="row mb-5">
+
+        <div class="col-md-4 d-flex align-items-center justify-content-center">
+            <label for="nombrecategoria">Categorías</label>
+        </div>
+
+        <div class="col-md-4 d-flex align-items-center justify-content-center">
+<!--          <input type="submit" id="btnlistartodocategoria" value="Listar todos" />-->
+			<a class="enlace" href="/administracion/categorias" > Listar todos</a>
+        </div>
+
+        <div class="col-md-4 d-flex align-items-center justify-content-center">
+          <a class="enlace" href="/administracion/categorias/nuevo" > Crear nuevo</a>
+        </div>
+       
+      </div>
+
+	<div class="row mb-5">
+
+        <div class="col-md-4 d-flex align-items-center justify-content-center">
+            <label for="nombrecomentarios">Comentarios</label>
+        </div>
+        
+        <div class="col-md-4 d-flex align-items-center justify-content-center">
+<!--          <input type="submit" id="btnlistartodocategoria" value="Listar todos" />-->
+			<a class="enlace" href="/administracion/comentarios" > Listar todos</a>
+        </div>
+
+        <div class="col-md-4 d-flex align-items-center justify-content-center">
+          <a class="enlace" href="/administracion/comentarios/nuevo" > Crear nuevo</a>
+        </div>
+       
+      </div>
+
+
+    </div>
+
+  </main>
+  
+
+  <footer id="footer2">
+    <object id="objFooter" th:insert="footer::footer"></object> 
+  </footer>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <script src="/bs/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>

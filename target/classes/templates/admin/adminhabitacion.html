@@ -1,0 +1,131 @@
+<!-- Álvarez Suárez María. -->
+
+<!doctype html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+   <link rel="icon" href="/img/icono.png"> 
+  <title>Administración</title>
+
+  <link href="/bs/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/css/headerfooter.css" rel="stylesheet">
+</head>
+
+<body>
+
+  <header id="header2">
+	<object id="objHeader" th:insert="header::header" th:with="currentPage='administracion'"></object> 
+  </header>
+
+
+  <main class="container">
+
+    <div class="my-3 p-3 bg-body rounded shadow-sm">
+        
+      <div class="row mb-5">
+        <h1>ADMINISTRACIÓN</h1>
+      </div>
+
+	<div class="m-5">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item">
+                        <a href="/">
+                            <i class="fas fa-home fa-sm fa-fw mr-3 text-gray-600"></i>
+                        </a>
+                    </li>
+                    <li class="breadcrumb-item"><a href="/administracion">Administración</a></li>
+                    <li class="breadcrumb-item"><a href="/administracion/habitaciones">Habitaciones</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Ficha Habitación</li>
+                </ol>
+            </nav>
+        </div>
+      
+      <div class="row">
+            <div class="col-5 mx-auto">
+<!--                <form class="my-3 p-3 bg-body rounded shadow-sm" th:action="@{/habitaciones/{id}(id=${habitacion.idhabitacion})/edit/{id}(id=${habitacion.idhabitacion})}" method="post">-->
+                    
+                    <div class="d-flex pt-3">
+                        <label for="id">Id</label>
+                    </div>
+                    <div class="d-flex pt-3">
+                        <input type="number" id="id" th:value="${habitacion.idhabitacion}"  oninvalid="this.setCustomValidity('Id obligatorio')" required readonly/>
+                    </div>
+                    
+                    <div class="d-flex pt-3">
+                        <label for="tipo">Tipo</label>
+                    </div>
+                    <div class="d-flex pt-3">
+                        <input type="text" min="0" max="5" id="tipo" th:value="${habitacion.tipo}"  oninvalid="this.setCustomValidity('Tipo obligatorio')" required readonly/>
+                    </div>
+        
+                    <div class="d-flex pt-3">
+                        <label for="descripcion">Descripción</label>
+                    </div>
+                    <div class="d-flex pt-3">
+                        <input type="text" id="descripcion" th:value="${habitacion.descripcion}"  oninvalid="this.setCustomValidity('Descripción obligatorio')" required readonly/>
+                    </div>
+                    
+                   	<div class="d-flex pt-3">
+                        <label for="cantidad">Cantidad</label>
+                    </div>
+                    <div class="d-flex pt-3">
+                        <input type="number" min="0" id="cantidad" th:value="${habitacion.cantidad}" oninvalid="this.setCustomValidity('Cantidad obligatorio')" required readonly/>
+                    </div> 
+                    
+                    <div class="d-flex pt-3">
+                        <label for="precio">Precio</label>
+                    </div>
+                    <div class="d-flex pt-3">
+                        <input type="number" step="0.00" min="0" id="precio" th:value="${habitacion.precio}"   oninvalid="this.setCustomValidity('Precio obligatorio')" required readonly/>
+                    </div> 
+                    
+                    <div class="d-flex pt-3">
+                        <label for="imagen">Imagen</label>
+                    </div>
+                    <div class="d-flex pt-3">
+                        <input type="text" id="imagen" th:value="${habitacion.img}"   oninvalid="this.setCustomValidity('Imagen obligatorio')" required readonly/>
+                    </div> 
+
+                    <div class="d-flex pt-3">
+						<label for="hotel">Hotel</label>
+					</div>
+					<div class="d-flex pt-3">
+						<select id="hotel" disabled>
+						    <option th:each="hotel : ${hoteles}" th:value="${hotel.idhotel}" th:text="${hotel.nombre}" th:selected="${hotel.idhotel == habitacion.hotel.idhotel}" >Nombre del hotel</option>
+						</select>
+					</div>                                 
+						                                
+        
+                    <div class="d-flex pt-3">
+						<a class="enlace" th:href="@{/administracion/habitaciones/editar/{id}(id=${habitacion.idhabitacion})}" target="_top">Editar</a>
+                    </div>
+                    <div class="d-flex pt-3">
+		                <a class="enlace" th:href="@{/administracion/habitaciones/eliminar/{id}(id=${habitacion.idhabitacion})}" target="_top">Eliminar</a>
+		            </div>
+                    <div class="d-flex pt-3">
+                        <a class="enlace" href="/administracion/habitaciones" target="_top">Cancelar</a>
+                    </div>
+<!--                </form>-->
+            </div>
+        </div>
+
+    </div>
+      
+	
+	
+
+  </main>
+  
+
+  <footer id="footer2">
+    <object id="objFooter" th:insert="footer::footer"></object> 
+  </footer>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <script src="/bs/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>

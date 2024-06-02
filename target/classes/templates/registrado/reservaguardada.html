@@ -1,0 +1,48 @@
+<!-- Álvarez Suárez María.-->
+
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+     <link rel="icon" href="/img/icono.png"> 
+    <title>Asturias - Confirmar reserva</title>
+
+    <link href="/bs/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="/css/headerfooter.css" rel="stylesheet" />
+  </head>
+
+  <body>
+    <header id="header2">
+<!--      <object id="objHeader" type="text/html" data="header.html?pag=confirmarreserva" ></object>-->
+		<object id="objHeader" th:insert="header::header"></object> 
+    </header>
+    
+    <main class="container">
+
+       	<div class="my-3 p-3 bg-body rounded shadow-sm">
+        
+                <h1>Reserva confirmada</h1>
+        
+		        <div class="col-12 col-md-4 mx-auto" >   
+		
+		          <p>Fecha inicio: <span th:text="${reserva.fechainicio}"></span></p>
+		          <p>Fecha fin: <span th:text="${reserva.fechafin}"></span></p>
+		          <p> Número de habitaciones: <span th:text="${reserva.numhabitaciones}"></span></p>
+		          <p>Precio: <span th:text="${reserva.precio}"></span></p>
+		
+		        </div>
+        
+            </div>
+        
+        </main>
+
+    
+    <footer id="footer2">
+      <object id="objFooter" th:insert="footer::footer"></object> 
+    </footer>
+
+    <script src="/js/confirmarreserva.js"></script>
+    <script src="/bs/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

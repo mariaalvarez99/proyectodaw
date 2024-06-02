@@ -1,0 +1,54 @@
+<!-- Álvarez Suárez María. -->
+
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width-device-width, initial-scale=1" />
+    <!-- <link rel="icon" href="img/icono.png" /> -->
+    <title>Asturias - Recepción</title>
+    <link type="text/css" rel="stylesheet" href="/bs/css/bootstrap.min.css" />
+    <link href="/css/headerfooter.css" rel="stylesheet" />
+  </head>
+
+  <body>
+    <header id="header2">
+      <object id="objHeader" th:insert="header::header" th:with="currentPage='recepcion'"></object> 
+    </header>
+
+    <main class="container">
+      <div class="my-3 p-3 bg-body rounded shadow-sm">
+
+        <div class="row mb-5">
+          <h1>RECEPCIÓN</h1>
+        </div>
+        
+        <div class="col-12 col-md-4 mx-auto">
+		  <div class="d-flex flex-column justify-content-center align-items-center pt-3">
+		    <p class="pt-3">
+		      <a href="/recepcion/comprobardisponibilidad" class="enlace" target="_top">Comprobar disponibilidad</a>
+		    </p>
+		    <p class="pt-3">
+		      <a href="/recepcion/reservas" class="enlace" target="_top">Reservas</a>
+		    </p>
+		    <p class="pt-3">
+		      <a href="/recepcion/usuarios" class="enlace" target="_top">Usuarios</a>
+		    </p>
+		  </div>
+		</div>
+
+
+        
+
+
+
+      </div>
+    </main>
+
+    <footer id="footer2">
+      <object id="objFooter" th:insert="footer::footer"></object> 
+    </footer>
+
+    <script src="/bs/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
